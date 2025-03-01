@@ -101,18 +101,15 @@ export default function Dashboard() {
 		setSortSettins({});
 		setSearchData(data);
 	}
-	
+
 	return (
 		<div>
 			<Header heading="Dashboard" />
-			<Input handleSearch={handleSearch} dataLength={searchData.length} value={searchTerm}/>
+			<Input handleSearch={handleSearch} dataLength={searchData.length} value={searchTerm} />
 			{isTestsLoading && <p>Loading...</p>}
 			{testsError && <p>Something went wrong!</p>}
-			{searchData.length > 0 ? (
-				<Table data={searchData} handleSort={sortData} />
-			) : (
-				<NoResults handleReset={handleReset} />
-			)}
+			{searchData.length > 0 && <Table data={searchData} handleSort={sortData} />}
+			{!testsError && searchData.length === 0 && <NoResults handleReset={handleReset} />}
 		</div>
 	);
 }
