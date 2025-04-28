@@ -29,11 +29,6 @@ export interface Test {
 	siteId: number;
 }
 
-export interface FormattedData {
-	id: number;
-	name: string;
-	type: Type;
-	status: Status;
-	siteId: number;
+export interface FormattedData extends Test {
 	siteUrl: string;
 }
